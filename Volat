@@ -1,0 +1,63 @@
+
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
+import java.io.*;
+
+
+public class volat extends Frame {
+    public static void main (String [] argv){
+	volat h = new volat();
+    }
+TextField inputFileName;
+    public class Listener1 implements ActionListener{
+	    public void actionPerformed(ActionEvent e) {
+		inputFileName.setText(".txt");
+		//System.exit(0);
+	    }
+     }
+TextField outputFileName;
+    public class Listener2 implements ActionListener{
+	    public void actionPerformed(ActionEvent e) {
+		outputFileName.setText(".txt");
+		//System.exit(0);
+	    }
+        }
+
+	public volat()
+	{ 
+	setTitle("Volat");		
+	setSize(400, 250);
+	GridLayout grid1= new GridLayout(6,1);// кількість стовбців, кількість рядків
+    	setLayout(grid1);
+		Label label1 = new Label ("Завантажити вихідний файл");
+                                    inputFileName = new TextField ("input.txt");
+		Button button1 = new Button ("Обзор");
+		Label label2 = new Label ("Створити файл збереження");
+		outputFileName = new TextField ("output.txt");
+		Button button2 = new Button ("Выбрать файл");
+		Button button3 = new Button ("Посчитать волатильность");
+		add (label1);
+		add (inputFileName);
+		add (button1);
+		button1.addActionListener(new  Listener1 ());
+		add (label2);
+		add (outputFileName);
+		add (button2);
+		button2.addActionListener(new  Listener1 ());
+		add (button3);
+		button3.addActionListener(new  Listener1 ());
+		
+
+	        setVisible(true);
+	addWindowListener(new WindowAdapter(){
+	    public void windowClosing(WindowEvent e){ 
+		System.exit(0);
+	    }
+	});
+
+	}	
+
+
+}
