@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
@@ -7,6 +6,7 @@ import java.io.*;
 
 
 public class volat extends Frame {
+FileDialog dialogLoad;
     public static void main (String [] argv){
 	volat h = new volat();
     }
@@ -24,30 +24,40 @@ TextField outputFileName;
 		//System.exit(0);
 	    }
         }
-
+      Frame myWindow;
 	public volat()
 	{ 
-	setTitle("Volat");		
-	setSize(400, 250);
-	GridLayout grid1= new GridLayout(6,1);// кількість стовбців, кількість рядків
-    	setLayout(grid1);
+		
+		setTitle("Volat");		
+		setSize(400, 250);
+		GridLayout grid1= new GridLayout(10,1);// кількість стовбців, кількість рядків
+	    	setLayout(grid1);
 		Label label1 = new Label ("Завантажити вихідний файл");
-                                    inputFileName = new TextField ("input.txt");
-		Button button1 = new Button ("Обзор");
+                inputFileName = new TextField ("input.txt");
+		Button BtDownload  = new Button ("Обзор");		
 		Label label2 = new Label ("Створити файл збереження");
 		outputFileName = new TextField ("output.txt");
 		Button button2 = new Button ("Выбрать файл");
 		Button button3 = new Button ("Посчитать волатильность");
 		add (label1);
 		add (inputFileName);
-		add (button1);
-		button1.addActionListener(new  Listener1 ());
+		add (BtDownload);
+		BtDownload.addActionListener(new  Listener1 ());
 		add (label2);
 		add (outputFileName);
 		add (button2);
 		button2.addActionListener(new  Listener1 ());
 		add (button3);
 		button3.addActionListener(new  Listener1 ());
+		
+
+		BtDownload.addActionListener(new ActionListener() {
+	    	    public void actionPerformed(ActionEvent e) {
+		        dialogLoad = new FileDialog( myWindow, "Обзор", FileDialog.LOAD);
+		        dialogLoad.show();
+		        String s = dialogLoad.getFile();
+                    }
+		});
 		
 
 	        setVisible(true);
