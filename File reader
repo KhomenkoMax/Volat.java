@@ -1,0 +1,38 @@
+import java.io.*;
+public class FileDigital{
+    public static void main(String[] arg) throws IOException{
+        BufferedReader reader = new BufferedReader(new FileReader("input.txt")); //входной файл
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); //выходной файл
+        StringBuffer sb = new StringBuffer();//буфер для входного текста
+        StringBuffer rez = new StringBuffer();//буфер для обработанного текста
+        int startPos = 0, endPos = 0, i = 0;
+ 
+        while (true){//цикл для вычитывания файла
+            String buffer = reader.readLine();
+            if (buffer == null){
+                break;
+            }
+            sb.append(buffer + "\n");//заполняем буфер вычитанным текстом
+        }
+ 
+        while (i < sb.length()){//начало обработки
+            if(Character.isDigit(sb.charAt(i))){//если символ число
+                startPos = i;
+                while (Character.isDigit(sb.charAt(i))){
+                    i++;
+                }
+                endPos = i;
+                rez.append("(" + sb.toString().substring(startPos, endPos) + ")");//заполняем выходной буфер
+            }
+            else{
+                rez.append(sb.charAt(i));//если символ не число
+            }
+            i++;
+        }
+        writer.write(rez.toString());//пишем в файл обработанный текст
+        System.out.println(rez.toString());
+        writer.flush();//закрываем потоки i/o, лучше бы все это запихнуть в try/finally
+        writer.close();
+        reader.close();
+    }
+}
