@@ -1,6 +1,6 @@
 import java.io.*;
-public class FileDigital{
-    public static void main(String[] arg) throws IOException{
+public class FileReader{
+    public static void FileReader(String[] arg) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader("input.txt")); //входной файл
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); //выходной файл
         StringBuffer sb = new StringBuffer();//буфер для входного текста
