@@ -31,7 +31,7 @@ public class FileReader{
         }
         writer.write(rez.toString());//пишем в файл обработанный текст
         System.out.println(rez.toString());
-        writer.flush();//закрываем потоки i/o, лучше бы все это запихнуть в try/finally
+        writer.flush();//закрываем потоки i/o
         writer.close();
         reader.close();
     }
